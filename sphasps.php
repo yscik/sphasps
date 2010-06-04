@@ -40,8 +40,6 @@ class Sphasps
 		
 		self::$sp->parsedefs($root_token->children);
 		
-		var_dump($this->variables);
-		
 		self::$sp->reorder($root_token);
 		$code = self::$sp->parseblock($root_token->children);
 		

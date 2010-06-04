@@ -1,6 +1,6 @@
 <?php 
 
-include_once('sphasps.php');
+include_once('../sphasps.php');
 
 Sphasps::test("test.sass");
 
