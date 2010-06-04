@@ -1,0 +1,77 @@
+
+$blo = 5px
+!foo = 2px
+!bar: 2px
+$barn: 2px
+$barn: 6px!default
+
+$col = color
+
+@import "test3.sass"
+
+@import "test5.css"
+
+@media all
+
+=mixin
+  color: red
+  font: $blo Arial,sans-serif
+  .error
+    background: #fff
+  
+#main
+  width: 97%
+
+  /* boojah
+  p, div
+    font-size: 2em
+    a
+      font-weight: bold
+      +mixin()
+      &:hover
+        color: red
+
+  color: 3 + (4 * 2) - 6
+  border: (3 + 3) * 4 - (4 * 3)px
+  border-#{$col}: red
+  
+  $i = 1
+  @while $i <= 4
+    hello: world $i
+    $i = $i + 1
+ 
+  //  
+    @if $i == 5
+      what: up
+  	
+    @if $i != 5
+      what: ever
+  
+    @for $kj = 2 .. 6
+      hello: world $kj
+
+  // whoa
+  pre
+    font-size: 3em
+    
+#test p
+  a
+    color: red
+  
+  color: #00ff00
+  width: 97% !important
+  font: 3px
+    family: serif
+    weight: bold
+  
+  .ie &
+    width: 95%
+  .redbox
+    background-color: #ff0000
+    color: #000000
+    
+#test
+  @include testmix("#fff", 30)
+  
+div *
+  content: $col
