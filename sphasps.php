@@ -71,7 +71,7 @@ class Sphasps
 	 */
 	protected function parsedefs(&$tokens)
 	{
-		if($tokens && is_a($tokens, "Token")) $tokens = array($tokens);
+		if($tokens && is_a($tokens, "Sphasps_Token")) $tokens = array($tokens);
 		if($tokens) foreach($tokens as $in => $token)
 		{
 			switch($token->type)
@@ -156,7 +156,9 @@ class Sphasps
 				
 				case "mixin":
 					$mixin = $this->mixins[$token->data[0]];
-					
+
+          if(!$this->mixins[$token->data[0]]) continue;
+          
 					$mt = $this->mixins[$token->data[0]]->children;
 					
 					// Arguments
@@ -217,7 +219,7 @@ class Sphasps
 							
 						case "while":
 							if(!$token->children) break;
-							while(eval("return " . $this->parsevalue($token->data[1]) . ";"))
+              while(eval("return " . $this->parsevalue($token->data[1]) . ";"))
 							{
 								$code[] = $this->parseblock($token->children);
 								

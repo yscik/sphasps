@@ -11,7 +11,7 @@ class Sphasps_Tokeniser
 	 * Build the token hierarchy tree
 	 * 
 	 * @param string $sass
-	 * @return Token root token
+	 * @return Sphasps_Token root token
 	 */
 	public function tokenize($sass)
 	{
@@ -24,7 +24,7 @@ class Sphasps_Tokeniser
 		$line_c = 0;
 		
 		$level = 1;
-		$root = new Token;
+		$root = new Sphasps_Token;
 		$root->type = "root";
 		$root->parent = $root;
 		
@@ -45,7 +45,7 @@ class Sphasps_Tokeniser
 				$line = substr($line, $wsl);
 			}
 			
-			$t = new Token;
+			$t = new Sphasps_Token;
 			$t->level = $i;
 			$t->line = $line_c;
 			
@@ -90,7 +90,7 @@ class Sphasps_Tokeniser
 	/**
 	 * Identify token type and extract data
 	 * 
-	 * @param Token $token
+	 * @param Sphasps_Token $token
 	 */
 	protected function id(&$token)
 	{
@@ -171,7 +171,7 @@ class Sphasps_Tokeniser
 }
 
 
-class Token
+class Sphasps_Token
 {
 	public $level, $parent, $type, $value, $data, $children, $line;
 	
