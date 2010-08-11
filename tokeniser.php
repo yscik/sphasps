@@ -81,7 +81,7 @@ class Sphasps_Tokeniser
 			$this->id($t);
 			$tokens[] = $t;
 			//var_dump($t);
-			#echo " " . $t . "<br />";
+			//echo " " . $t . "<br />";
 		}
 		
 		return $root;
@@ -144,6 +144,12 @@ class Sphasps_Tokeniser
 				$token->type = "command"; 
 				break;
 			
+			// Selector
+			case preg_match('/^\\\\?((?:[a-z0-9_#.&,+*"\'~>()|[^$=\] -]|(?:::?[a-z]))+)$/i', $v, $m):
+
+				$token->type = "selector";
+				break;
+
 			// Property
 			case preg_match('/^((?:[a-z0-9_-]+|#{[^{]+})+) *:(.*)$/i', $v, $m) 
 			  || preg_match('/^:((?:[a-z0-9_-]+|#{[^{]+})+ )(.*)$/i', $v, $m): 
@@ -151,12 +157,6 @@ class Sphasps_Tokeniser
 				$token->type = "property"; 
 				break;
 			
-			// Selector
-			case preg_match('/^\\\\?([a-z0-9_#.&:,+* -]+)$/i', $v, $m): 
-				
-				$token->type = "selector"; 
-				break;
-				
 			// Unrecognized
 			default:
 				$token->type = "error-unknown"; 
